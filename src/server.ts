@@ -8,7 +8,7 @@ import {adding, show} from './logic';
 
 
 const PORT: number = parseInt(process.env.PORT || port);
-const HOST: string = '0.0.0.0';
+const HOST: string = process.env.IP || '127.0.0.1';
 
 const app = express();
 
@@ -97,8 +97,8 @@ app.use((req: Request, res: Response) => {
 /**
  * Start server
  */
-const server = app.listen(PORT, HOST, () => {
-  console.log(`Express Server started and awaiting requests at the URL: '${url}':'${PORT}'`);
+const server = app.listen(PORT, () => {
+  console.log(`Express Server started and awaiting requests at the URL: ${PORT}'`);
 });
 
 /**
