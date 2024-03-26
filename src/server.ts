@@ -98,7 +98,7 @@ app.use((req: Request, res: Response) => {
  * Start server
  */
 const server = app.listen(PORT, HOST, () => {
-  console.log(`Express Server started and awaiting requests at the URL: '${url}:${PORT}'`);
+  console.log(`Express Server started and awaiting requests at the URL: '${url}'`);
 });
 
 /**
