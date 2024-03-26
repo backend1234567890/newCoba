@@ -27,11 +27,12 @@
             label.innerHTML = newValue;
         }
         function handleButton1() {
-            fetch('/add?a=' + document.getElementById('input1').value + '&b=' + document.getElementById('input2').value, {
+            fetch('/add, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify({ a: document.getElementById('input1').value, b: document.getElementById('input2').value })
             }).then(response => response.json()).then(
                 users => changeLabel('myLabel', users.result) & console.log(users)
             )
