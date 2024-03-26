@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Boxes and Buttons</title>
+</head>
+<body>
+    <div>
+        <label for="input1">Input 1:</label>
+        <input type="text" id="input1" name="input1">
+    </div>
+    <div>
+        <label for="input2">Input 2:</label>
+        <input type="text" id="input2" name="input2">
+    </div>
+    <div>
+        <button type="button" onclick="handleButton1()">Button Add</button>
+        <button type="button" onclick="handleButton2()">Button Show</button>
+    </div>
+    <label id="myLabel"></label>
+    <label id="myLabel2">2</label>
+
+    <script>
+        function changeLabel(id, newValue) {
+            var label = document.getElementById(id);
+            label.innerHTML = newValue;
+        }
+        function handleButton1() {
+            fetch('/add?a=' + document.getElementById('input1').value + '&b=' + document.getElementById('input2').value, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }).then(response => response.json()).then(
+                users => changeLabel('myLabel', users.result) & console.log(users)
+            )
+        }
+
+        function handleButton2() {
+            fetch('/show', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }).then(response => response.json()).then(
+                users => changeLabel('myLabel2', users.number) & console.log(users)
+            )
+        }
+
+    </script>
+</body>
+</html>
