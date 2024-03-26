@@ -53,8 +53,7 @@ app.get('/echo/echo', (req: Request, res: Response) => {
 // YOUR ROUTES SHOULD BE DEFINED BELOW THIS DIVIDER
 // ========================================================================= //
 app.post('/add', (req: Request, res: Response) => {
-    const a = req.query.a as string;  
-    const b = req.query.b as string;  
+    const {a,b} = req.body;
 
     const response = adding(parseInt(a), parseInt(b));
     res.json(response);
