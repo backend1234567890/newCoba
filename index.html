@@ -27,7 +27,7 @@
             label.innerHTML = newValue;
         }
         function handleButton1() {
-            fetch('https://api.github.com/repos/backend1234567890/newCoba/add', {
+            fetch('/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -39,7 +39,7 @@
         }
 
         function handleButton2() {
-            fetch('https://api.github.com/repos/backend1234567890/newCoba/show', {
+            fetch('/show', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
