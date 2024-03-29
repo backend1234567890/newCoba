@@ -5,6 +5,7 @@
   "main": "src/server.ts",
   "scripts": {
     "test": "jest",
+    "build": "your build command here",
     "ts-node": "ts-node",
     "ts-node-dev": "ts-node-dev",
     "tsc": "tsc --noEmit",
