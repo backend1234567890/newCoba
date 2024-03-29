@@ -4,6 +4,10 @@
   "description": "[TOC]",
   "main": "src/server.ts",
   "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "clean": "gatsby clean",
     "test": "jest",
     "ts-node": "ts-node",
     "ts-node-dev": "ts-node-dev",
