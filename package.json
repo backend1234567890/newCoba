@@ -52,7 +52,7 @@
     "gatsby-source-filesystem": "^5.0.0",
     "gatsby-transformer-sharp": "^5.0.0",
     "gatsby-plugin-sharp": "^5.0.0"
-  }, ,
+  },
   "devDependencies": {
     "eslint": "^8.10.0",
     "prettier": "^2.5.1",
