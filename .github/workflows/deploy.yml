@@ -1,8 +1,8 @@
-# Sample workflow for building and deploying a Gatsby site to GitHub Pages
+# Sample workflow for building and deploying a static site to GitHub Pages
 #
-# To get started with Gatsby see: https://www.gatsbyjs.com/docs/quick-start/
-#
-name: Deploy Gatsby site to Pages
+# To get started with creating your static site, refer to the respective documentation.
+
+name: Deploy Static Site to GitHub Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -56,38 +56,29 @@ jobs:
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v4
-
-      - name: Restore cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            public
-            .cache
-          key: ${{ runner.os }}-gatsby-build-${{ hashFiles('public') }}
-          restore-keys: |
-            ${{ runner.os }}-gatsby-build-
-      - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Build with newCoba
-        env:
-          PREFIX_PATHS: "true"
+      - name: Build the static site
         run: ${{ steps.detect-package-manager.outputs.manager }} run build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
-          path: ./public
+          name: built-site
+          path: ./build
 
   # Deployment job
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: built-site
+          path: ./build
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          cname: your-custom-domain.com # Optional: Add your custom domain here if needed
