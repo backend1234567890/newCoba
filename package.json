@@ -6,7 +6,6 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "start": "gatsby develop",
     "clean": "gatsby clean",
     "test": "jest",
     "ts-node": "ts-node",
@@ -52,11 +51,5 @@
     "gatsby-source-filesystem": "^5.0.0",
     "gatsby-transformer-sharp": "^5.0.0",
     "gatsby-plugin-sharp": "^5.0.0"
-  },
-  "devDependencies": {
-    "eslint": "^8.10.0",
-    "prettier": "^2.5.1",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-config-airbnb": "^19.0.4"
   }
 }
